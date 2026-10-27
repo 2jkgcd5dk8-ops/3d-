@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مسعّر الطباعة ثلاثية الأبعاد</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f3f5f7;--card:#fff;--tx:#17202a;--mut:#66758a;--bd:#e0e6ed;--ac:#0b7a66;--ac2:#e5f4f0;--in:#f8fafb;--wr:#b45309;--sh:0 1px 3px rgba(20,40,60,.07),0 6px 18px rgba(20,40,60,.05)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1318;--card:#181f27;--tx:#e8edf2;--mut:#92a0b1;--bd:#2a3541;--ac:#37c8a4;--ac2:#13312a;--in:#121820;--wr:#f0a35a;--sh:none}}
+:root[data-theme="dark"]{--bg:#0e1318;--card:#181f27;--tx:#e8edf2;--mut:#92a0b1;--bd:#2a3541;--ac:#37c8a4;--ac2:#13312a;--in:#121820;--wr:#f0a35a;--sh:none}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Tajawal',system-ui,sans-serif;line-height:1.6;padding-bottom:96px}
+.wrap{max-width:680px;margin:0 auto;padding:14px}
+.hd{display:flex;align-items:center;gap:10px;margin:4px 0 12px}
+.logo{width:42px;height:42px;border-radius:12px;background:var(--ac);color:#fff;display:grid;place-items:center;font-size:1.3rem}
+h1{font-size:1.2rem;margin:0;font-weight:800}.hd p{margin:0;color:var(--mut);font-size:.8rem}
+.tabs{display:flex;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:4px;margin-bottom:12px}
+.tabs button{flex:1;border:0;background:none;color:var(--mut);font:inherit;font-weight:700;padding:9px;border-radius:9px;cursor:pointer}
+.tabs button.on{background:var(--ac);color:#fff}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:var(--sh)}
+.card>h2,summary{font-size:.98rem;font-weight:800;margin:0 0 10px}
+.card>h2 span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac2);color:var(--ac);font-size:.78rem;margin-inline-end:6px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}.f{grid-column:1/-1}
+label{display:block;font-size:.8rem;color:var(--mut);margin-bottom:3px}
+input,select{width:100%;padding:11px 10px;border:1px solid var(--bd);border-radius:10px;background:var(--in);color:var(--tx);font:inherit;font-size:1rem}
+input[type=number]{direction:ltr;text-align:right}
+input:focus,select:focus{outline:2px solid var(--ac)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--bd);background:var(--in);color:var(--tx);font:inherit;font-size:.86rem;padding:7px 12px;border-radius:999px;cursor:pointer}
+.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.chip small{opacity:.75;margin-inline-start:4px}
+.hint{background:var(--ac2);border-radius:12px;padding:10px 12px;font-size:.85rem;margin-top:10px;display:flex;gap:8px;align-items:center;justify-content:space-between}
+.hint b{color:var(--ac)}
+.lnk{border:0;background:none;color:var(--ac);font:inherit;font-weight:700;cursor:pointer;padding:0;white-space:nowrap}
+.note{font-size:.76rem;color:var(--mut);margin:8px 0 0}.warn{color:var(--wr)}
+.up{border:2px dashed var(--bd);border-radius:14px;min-height:110px;display:grid;place-items:center;text-align:center;color:var(--mut);cursor:pointer;overflow:hidden;position:relative;background:var(--in)}
+.up img{width:100%;max-height:230px;object-fit:cover;display:block}
+.up .x{position:absolute;top:8px;inset-inline-start:8px;background:rgba(0,0,0,.6);color:#fff;border:0;border-radius:50%;width:30px;height:30px;font-size:1rem;cursor:pointer}
+details{margin-bottom:12px}
+details.card summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;margin:0}
+details.card summary:after{content:"＋";color:var(--ac)}details[open].card summary:after{content:"－"}
+details>.in{margin-top:12px}
+table{width:100%;border-collapse:collapse;font-size:.82rem;direction:rtl}
+th,td{padding:6px 4px;text-align:center;border-bottom:1px solid var(--bd)}th{color:var(--mut);font-weight:500}
+.big{text-align:center;padding:6px 0 10px}.big .l{color:var(--mut);font-size:.82rem}
+.big .v{font-size:2.5rem;font-weight:800;color:var(--ac);direction:ltr;display:inline-block;line-height:1.2}
+.pic{width:64px;height:64px;border-radius:12px;object-fit:cover;background:var(--ac2);display:grid;place-items:center;font-size:1.6rem;flex:none}
+.bar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--bd);margin:6px 0 8px}.bar i{display:block}
+.leg{display:flex;flex-wrap:wrap;gap:3px 12px;font-size:.76rem;color:var(--mut);margin-bottom:6px}
+.leg span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-inline-end:4px}
+.row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--bd);font-size:.9rem}.row:last-child{border:0}.row b{direction:ltr}
+.st{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.s{background:var(--ac2);border-radius:10px;padding:8px;text-align:center;font-size:.76rem;color:var(--mut)}.s b{display:block;font-size:1rem;color:var(--tx);direction:ltr}
+.btn{width:100%;padding:12px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:inherit;font-weight:800;font-size:1rem;cursor:pointer}
+.btn.sec{background:var(--ac2);color:var(--ac)}
+.bt{position:fixed;bottom:0;inset-inline:0;background:var(--card);border-top:1px solid var(--bd);padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;z-index:5}
+.bt>div{flex:1;line-height:1.2}.bt small{color:var(--mut);font-size:.74rem}.bt b{font-size:1.35rem;color:var(--ac);direction:ltr;display:inline-block}
+.bt .btn{width:auto;padding:11px 22px}
+.it{display:flex;gap:12px;align-items:center}.it h3{margin:0;font-size:1rem}.it p{margin:0;color:var(--mut);font-size:.78rem}.it .pr{margin-inline-start:auto;text-align:left;font-weight:800;color:var(--ac);direction:ltr}
+.acts{display:flex;gap:8px;margin-top:10px}.acts .btn{padding:8px;font-size:.88rem}
+.empty{text-align:center;color:var(--mut);padding:30px 10px}
+.toast{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:9px 16px;border-radius:999px;font-size:.88rem;z-index:9;opacity:0;transition:.25s;pointer-events:none}.toast.on{opacity:1}
+.hide{display:none}
+
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pc{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden;box-shadow:var(--sh);cursor:pointer}
+.pc .ph{aspect-ratio:1;background:var(--ac2);display:grid;place-items:center;font-size:2.2rem;overflow:hidden}
+.pc img{width:100%;height:100%;object-fit:cover;display:block}
+.pc .pi{padding:9px 10px}.pc h3{margin:0;font-size:.92rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pc .pr{color:var(--ac);font-weight:800;direction:ltr;text-align:right}
+@media(min-width:560px){.pg{grid-template-columns:repeat(3,1fr)}}
+.lb,.lg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:20;display:grid;place-items:center;padding:16px}
+.lb .box,.lg .box{background:var(--card);border-radius:18px;max-width:420px;width:100%;overflow:hidden;padding:0}
+.lb img{width:100%;max-height:60vh;object-fit:contain;background:var(--ac2);display:block}
+.lb .pi{padding:14px;text-align:center}.lb h3{margin:0 0 4px}.lb .pr{font-size:1.6rem;font-weight:800;color:var(--ac);direction:ltr}
+.lg .box{padding:18px}
+code{background:var(--ac2);padding:2px 6px;border-radius:6px;font-size:.78rem;word-break:break-all;direction:ltr;display:inline-block}
+.bdg{background:var(--ac);color:#fff;border-radius:999px;font-size:.72rem;padding:2px 10px;margin-inline-start:6px}
+.swl{display:flex;gap:8px;align-items:center;font-size:.86rem;color:var(--tx);margin:10px 0 0}.swl input{width:auto}
+.ft{text-align:center;margin:26px 0 10px}
+ol{padding-inline-start:20px;font-size:.86rem;margin:6px 0}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hd"><div class="logo">🖨️</div><div style="flex:1"><h1>الطباعة ثلاثية الأبعاد <span class="bdg hide" id="bdg">مشرف</span></h1><p id="sub">معرض المنتجات</p></div><button class="lnk hide" id="out" type="button">خروج</button></div>
+
+<!-- VIEWER -->
+<div id="vw">
+<input id="q" placeholder="🔍 ابحث عن منتج" style="margin-bottom:12px">
+<div id="vg" class="pg"></div>
+<div class="ft"><button class="lnk" id="li" type="button" style="color:var(--mut);font-weight:400;font-size:.8rem">دخول المشرف</button></div>
+</div>
+
+<!-- ADMIN -->
+<div id="adm" class="hide">
+<div class="tabs"><button id="t1" class="on">الحاسبة</button><button id="t2">المحفوظات <span id="cnt"></span></button><button id="t3">النشر</button></div>
+
+<div id="v1">
+<div class="card hide" id="edb"><div style="font-size:.88rem">✏️ تعدّل نسخة من «<b id="edn"></b>» — الحفظ يضيفها كعنصر جديد.<label class="swl"><input type="checkbox" id="rep"> استبدال الأصلي بدل الإضافة</label></div></div>
+<div class="card"><h2><span>1</span>المنتج</h2>
+<div class="g">
+<div class="f"><label>اسم المنتج / العميل</label><input id="nm" placeholder="مثال: حامل جوال – أحمد"></div>
+<div class="f"><label>صورة المنتج (اختياري)</label>
+<div class="up" id="up"><div id="upt">📷<br>اضغط لإضافة صورة أو التقاطها</div><img id="im" class="hide" alt=""><button class="x hide" id="rm" type="button">✕</button></div>
+<input id="file" type="file" accept="image/*" class="hide"></div>
+<div><label>الوزن (غرام) من برنامج التقطيع</label><input id="wt" type="number" inputmode="decimal" placeholder="0"></div>
+<div><label>الكمية</label><input id="qty" type="number" inputmode="numeric" placeholder="1"></div>
+</div></div>
+
+<div class="card"><h2><span>2</span>الخامة وجودة الطباعة</h2>
+<label>نوع الفلامنت</label><div class="chips" id="mats"></div>
+<label style="margin-top:10px">جودة الطباعة (تحدد سرعة الطباعة للتقدير)</label><div class="chips" id="profs"></div>
+<div class="g" style="margin-top:10px">
+<div><label>سعر البكرة (ر.ع)</label><input id="sp" type="number" inputmode="decimal" value="6" step="0.5"></div>
+<div><label>وزن البكرة (غرام)</label><input id="sw" type="number" inputmode="decimal" value="1000"></div>
+</div></div>
+
+<div class="card"><h2><span>3</span>وقت الطباعة</h2>
+<div class="g"><div><label>ساعات</label><input id="hr" type="number" inputmode="decimal" placeholder="0"></div><div><label>دقائق</label><input id="mn" type="number" inputmode="decimal" placeholder="0"></div></div>
+<div class="hint" id="hint"></div>
+<p class="note">التقدير تقريبي حسب الوزن والجودة. الأدق أن تدخل الوقت الذي يظهره برنامج التقطيع.</p>
+<details style="margin-top:10px"><summary style="cursor:pointer;color:var(--ac);font-weight:700;font-size:.88rem">جدول مرجعي: الوزن مقابل ساعات الطباعة</summary><div id="tbl" style="margin-top:8px"></div></details>
+</div>
+
+<div class="card"><h2><span>4</span>هامش الربح</h2>
+<div class="chips" id="mgc"></div>
+<div class="g" style="margin-top:10px"><div><label>هامش الربح %</label><input id="mg" type="number" inputmode="decimal" value="40"></div><div><label>الحد الأدنى للطلب (ر.ع)</label><input id="minp" type="number" inputmode="decimal" value="2" step="0.5"></div></div></div>
+
+<details class="card"><summary>⚙️ إعدادات متقدمة (تُحفظ تلقائيًا)</summary><div class="in"><div class="g">
+<div class="f"><label>متوسط استهلاك الطابعة (واط)</label><input id="pw" type="number" inputmode="decimal" value="110"></div>
+<div class="f"><label>استهلاك بيتك الشهري بدون الطباعة (ك.و.س)</label><input id="hh" type="number" inputmode="decimal" value="1500"></div>
+<div class="f"><label>الخصم الموسمي على التعرفة</label><select id="ssn"><option value="0,0,0">بدون خصم (خارج الصيف)</option><option value="15,10,5">مايو (15% / 10% / 5%)</option><option value="20,15,10">يونيو – أغسطس (20% / 15% / 10%)</option></select></div>
+<div><label>شريحة 1 (حتى 4000) بيسة</label><input id="r1" type="number" inputmode="decimal" value="14"></div>
+<div><label>شريحة 2 (4001–6000) بيسة</label><input id="r2" type="number" inputmode="decimal" value="18"></div>
+<div class="f"><label>شريحة 3 (فوق 6000) بيسة</label><input id="r3" type="number" inputmode="decimal" value="32"></div>
+<div><label>سعر الطابعة وملحقاتها (ر.ع)</label><input id="pp" type="number" inputmode="decimal" value="250"></div>
+<div><label>العمر الافتراضي (ساعة)</label><input id="life" type="number" inputmode="decimal" value="4000"></div>
+<div class="f"><label>صيانة وقطع غيار % من سعر الطابعة</label><input id="mt" type="number" inputmode="decimal" value="25"></div>
+<div><label>سعر ساعة عملك (ر.ع)</label><input id="rate" type="number" inputmode="decimal" value="3" step="0.5"></div>
+<div><label>تصميم/تجهيز ملف (ساعات للطلب)</label><input id="des" type="number" inputmode="decimal" value="0"></div>
+<div><label>تقطيع ومتابعة (دقائق للطلب)</label><input id="set" type="number" inputmode="decimal" value="15"></div>
+<div><label>تنظيف ودعامات (دقائق للقطعة)</label><input id="post" type="number" inputmode="decimal" value="10"></div>
+<div><label>نسبة الفشل المتوقعة %</label><input id="fail" type="number" inputmode="decimal" value="5"></div>
+<div><label>هدر الفلامنت %</label><input id="waste" type="number" inputmode="decimal" value="6"></div>
+<div><label>ضريبة القيمة المضافة %</label><input id="vat" type="number" inputmode="decimal" value="0"></div>
+<div style="display:flex;align-items:end"><label style="display:flex;gap:8px;align-items:center;color:var(--tx);margin:0 0 12px"><input id="rnd" type="checkbox" checked style="width:auto"> تقريب لأقرب 0.100</label></div>
+</div>
+<p class="note">الكهرباء تُحسب بالزيادة الفعلية في فاتورتك. الأسعار الافتراضية للحساب الأساسي المعلنة (14/18/32 بيسة)؛ عدّلها إن كنت ضمن الدعم الوطني أو تغيّرت التعرفة. الضريبة 5% فقط إن كان نشاطك مسجلًا.</p>
+</div></details>
+
+<div class="card" id="res"><h2>النتيجة</h2>
+<div class="it" style="margin-bottom:6px"><div class="pic" id="rp">🖨️</div><div class="big" style="flex:1;padding:0"><div class="l" id="rn">السعر النهائي</div><div class="v" id="total">0.000</div> <span>ر.ع</span><div class="l" id="unit"></div></div></div>
+<div class="bar" id="bar"></div><div class="leg" id="leg"></div><div id="rows"></div><div class="st" id="stats"></div>
+<p class="note warn" id="alert"></p>
+<button class="btn sec" id="copy">نسخ عرض السعر</button>
+<button class="btn sec" id="clr" style="margin-top:8px">تفريغ الحاسبة</button>
+</div>
+</div>
+
+<div id="v2" class="hide"><div id="list"></div></div>
+
+<div id="v3" class="hide">
+<div class="card"><h2>نشر المنتجات للزوار</h2>
+<p class="note" style="margin-top:0">يرى الزوار فقط: اسم المنتج وصورته وسعر القطعة. لا تُنشر أي تفاصيل حساب.</p>
+<div class="st"><div class="s">ظاهر للزوار<b id="pc1">0</b></div><div class="s">إجمالي المحفوظات<b id="pc2">0</b></div></div>
+<button class="btn" id="dlp">تنزيل products.json</button>
+<button class="btn sec" id="cpp" style="margin-top:8px">نسخ المحتوى</button>
+<ol><li>نزّل الملف (أو انسخ المحتوى).</li><li>في GitHub افتح المستودع ← <b>Add file ← Upload files</b>.</li><li>ارفع <b>products.json</b> بنفس الاسم لاستبدال القديم، ثم <b>Commit changes</b>.</li><li>يتحدث الموقع للزوار خلال دقائق.</li></ol></div>
+<div class="card"><h2>معاينة كما يراها الزوار</h2><div id="pv" class="pg"></div></div>
+<div class="card"><h2>نسخة احتياطية كاملة</h2>
+<p class="note" style="margin-top:0">المحفوظات تُخزَّن في متصفح هذا الجهاز فقط. احتفظ بنسخة احتياطية بعد التعديلات.</p>
+<button class="btn sec" id="bk">تنزيل نسخة احتياطية</button>
+<button class="btn sec" id="rs" style="margin-top:8px">استرجاع من نسخة احتياطية</button>
+<input id="rsf" type="file" accept=".json,application/json" class="hide"></div>
+<div class="card"><h2>تأمين الدخول</h2>
+<p class="note" style="margin-top:0">لتعمل كلمة مرورك من أي جهاز وتمنع غيرك من إنشاء حساب مشرف، ضع هذا الرمز في المتغير <code>ADMIN_HASH</code> داخل index.html ثم ارفع الملف:</p>
+<div id="hsh" style="margin-top:6px"></div></div>
+</div>
+</div>
+</div>
+
+<div class="bt hide" id="bt"><div><small>السعر النهائي</small><br><b id="btv">0.000</b> <small>ر.ع</small></div><button class="btn" id="save">💾 حفظ كجديد</button></div>
+<div class="lb hide" id="lb"><div class="box"><img id="lbi" alt=""><div class="pi"><h3 id="lbn"></h3><div class="pr" id="lbp"></div></div></div></div>
+<div class="lg hide" id="lg"><div class="box"><h2 style="margin:0 0 10px;font-size:1.05rem">دخول المشرف</h2><label>كلمة المرور</label><input id="pwd" type="password" autocomplete="current-password"><p class="note" id="lgm">أول دخول على هذا الجهاز ينشئ كلمة المرور (4 أحرف على الأقل).</p><button class="btn" id="lgb" style="margin-top:8px">دخول</button><button class="btn sec" id="lgc" style="margin-top:8px">إلغاء</button></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+var ADMIN_HASH='072bab30a60bb35291a3d6fd76183e8cc4d1507d63b2cdb1ddc0ae1e77d1e581';
+var $=function(i){return document.getElementById(i)};
+var NUM=['wt','hr','mn','qty','sp','sw','waste','pw','hh','r1','r2','r3','pp','life','mt','rate','des','set','post','fail','mg','minp','vat'];
+var SET=['pw','hh','ssn','r1','r2','r3','pp','life','mt','rate','des','set','post','fail','waste','vat','minp','sp','sw','mg'];
+var MATS={PLA:{n:'PLA',sp:6,w:110,fail:5,waste:6,k:1},PETG:{n:'PETG',sp:8,w:130,fail:7,waste:7,k:.9},ABS:{n:'ABS / ASA',sp:9,w:170,fail:12,waste:10,k:.9},TPU:{n:'TPU مرن',sp:15,w:110,fail:12,waste:8,k:.5}};
+var PROFS={d:{n:'سريعة',g:28,s:'0.28 مم'},s:{n:'قياسية',g:15,s:'0.20 مم'},f:{n:'دقيقة',g:8,s:'0.12 مم'}};
+var mat='PLA',prof='s',auto=true,img='',last='',items=[],loadedId=null,last_total=0,last_unit=0,cur=1;
+function n(i){var v=parseFloat($(i).value);return isFinite(v)&&v>0?v:0}
+function f(x){return x.toFixed(3)}
+function toast(t){var e=$('toast');e.textContent=t;e.classList.add('on');setTimeout(function(){e.classList.remove('on')},1900)}
+function ld(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function safeImg(s){return typeof s==='string'&&s.indexOf('data:image/')===0?s:''}
+function tier(k,r){return Math.min(k,4000)*r[0]+Math.max(0,Math.min(k,6000)-4000)*r[1]+Math.max(0,k-6000)*r[2]}
+function hm(h){var m=Math.round(h*60);return Math.floor(m/60)+' س '+(m%60)+' د'}
+function est(){return n('wt')/(PROFS[prof].g*MATS[mat].k)}
+function dl(name,text){try{claude.use('downloads').then(function(d){if(!d){toast('التنزيل غير متاح هنا');return}d.save({filename:name,data:text}).catch(function(){})})}catch(e){toast('التنزيل غير متاح هنا')}}
+function cp(t){try{navigator.clipboard.writeText(t).then(function(){toast('تم النسخ')},function(){toast('تعذر النسخ')})}catch(e){toast('تعذر النسخ')}}
+
+/* ---------- المعرض (للزوار والمعاينة) ---------- */
+function grid(el,data,q){q=(q||'').trim().toLowerCase();
+ var L=data.filter(function(x){return !q||String(x.name).toLowerCase().indexOf(q)>-1});
+ if(!L.length){el.innerHTML='<div class="empty" style="grid-column:1/-1">'+(data.length?'لا نتائج مطابقة.':'لا توجد منتجات للعرض حاليًا.')+'</div>';return}
+ el.innerHTML=L.map(function(x,i){var im=safeImg(x.img);return '<div class="pc" data-i="'+data.indexOf(x)+'"><div class="ph">'+(im?'<img src="'+im+'" alt="">':'🖨️')+'</div><div class="pi"><h3>'+esc(x.name)+'</h3><div class="pr">'+f(+x.price||0)+' ر.ع</div></div></div>'}).join('');
+ el.onclick=function(e){var c=e.target.closest('.pc');if(!c)return;var x=data[+c.dataset.i],im=safeImg(x.img);
+  $('lbi').src=im;$('lbi').classList.toggle('hide',!im);$('lbn').textContent=x.name;$('lbp').textContent=f(+x.price||0)+' ر.ع';$('lb').classList.remove('hide')}}
+$('lb').onclick=function(){this.classList.add('hide')};
+var pubList=[];
+function loadPub(){fetch('products.json?t='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){pubList=Array.isArray(d)?d:[];grid($('vg'),pubList,$('q').value)}).catch(function(){$('vg').innerHTML='<div class="empty" style="grid-column:1/-1">تعذر تحميل المنتجات. حاول لاحقًا.</div>'})}
+$('q').oninput=function(){grid($('vg'),pubList,this.value)};
+
+/* ---------- الدخول ---------- */
+function isAdm(){return ld('p3d_admin',0)===1}
+function show(){var a=isAdm();$('adm').classList.toggle('hide',!a);$('vw').classList.toggle('hide',a);$('out').classList.toggle('hide',!a);$('bdg').classList.toggle('hide',!a);$('sub').textContent=a?'لوحة المشرف':'معرض المنتجات';
+ if(a){$('bt').classList.toggle('hide',cur!=1)}else{$('bt').classList.add('hide');loadPub()}}
+async function sha(s){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('p3d|'+s));return Array.prototype.map.call(new Uint8Array(b),function(x){return ('0'+x.toString(16)).slice(-2)}).join('')}
+$('li').onclick=function(){$('lgm').textContent='أول دخول على هذا الجهاز ينشئ كلمة المرور (4 أحرف على الأقل).';$('pwd').value='';$('lg').classList.remove('hide')};
+$('lgc').onclick=function(){$('lg').classList.add('hide')};
+$('lgb').onclick=async function(){var p=$('pwd').value;
+ if(p.length<4){$('lgm').textContent='كلمة المرور 4 أحرف على الأقل.';return}
+ if(!window.crypto||!crypto.subtle){$('lgm').textContent='افتح الموقع عبر رابط https.';return}
+ var h=await sha(p),ref=ADMIN_HASH||ld('p3d_hash','');
+ if(!ref){sv('p3d_hash',h);ref=h}
+ if(h!==ref){$('lgm').textContent='كلمة المرور غير صحيحة.';return}
+ sv('p3d_admin',1);$('lg').classList.add('hide');show();tab(1)};
+$('out').onclick=function(){sv('p3d_admin',0);show()};
+
+/* ---------- الحاسبة ---------- */
+function chips(id,obj,get,cb,sub){$(id).innerHTML=Object.keys(obj).map(function(k){return '<button type="button" class="chip'+(get()==k?' on':'')+'" data-k="'+k+'">'+obj[k].n+(sub?'<small>'+sub(obj[k])+'</small>':'')+'</button>'}).join('');
+ $(id).onclick=function(e){var b=e.target.closest('.chip');if(b)cb(b.dataset.k)}}
+function drawChips(){
+ chips('mats',MATS,function(){return mat},function(k){mat=k;var m=MATS[k];$('sp').value=m.sp;$('pw').value=m.w;$('fail').value=m.fail;$('waste').value=m.waste;drawChips();upd()},function(m){return m.sp+' ر.ع'});
+ chips('profs',PROFS,function(){return prof},function(k){prof=k;drawChips();upd()},function(p){return p.s});
+ chips('mgc',{20:{n:'20%'},30:{n:'30%'},40:{n:'40%'},60:{n:'60%'},100:{n:'100%'}},function(){return String(n('mg'))},function(k){$('mg').value=k;drawChips();calc()});}
+function table(){var w=[25,50,100,200,300,500,1000];
+ $('tbl').innerHTML='<table><tr><th>الوزن</th>'+Object.keys(PROFS).map(function(k){return '<th>'+PROFS[k].n+'</th>'}).join('')+'</tr>'+w.map(function(x){return '<tr><td>'+x+' غ</td>'+Object.keys(PROFS).map(function(k){return '<td>'+hm(x/(PROFS[k].g*MATS[mat].k))+'</td>'}).join('')+'</tr>'}).join('')+'</table><p class="note">محسوب لخامة '+MATS[mat].n+'. القطع الكثيفة أو الكبيرة أبطأ، والطابعات الحديثة السريعة أسرع.</p>'}
+function upd(){var e=est(),w=n('wt')>0;
+ if(auto){if(w){var m=Math.round(e*60);$('hr').value=Math.floor(m/60);$('mn').value=m%60}else{$('hr').value='';$('mn').value=''}}
+ $('hint').innerHTML=!w?'<span>💡 أدخل الوزن وسيُقدَّر الوقت تلقائيًا</span>':auto?'<span>💡 تقدير تلقائي: <b>'+hm(e)+'</b> لوزن '+n('wt')+' غ</span><span style="color:var(--mut);font-size:.78rem">يتحدث تلقائيًا</span>':'<span>💡 التقدير حسب الوزن: <b>'+hm(e)+'</b></span><button class="lnk" id="useE" type="button">استخدمه</button>';
+ var u=$('useE');if(u)u.onclick=function(){auto=true;upd()};
+ table();calc()}
+function calc(){
+ var s={};SET.forEach(function(i){s[i]=$(i).value});s.rnd=$('rnd').checked;s.mat=mat;s.prof=prof;sv('p3d_set',s);
+ var hrs=n('hr')+n('mn')/60;
+ $('rn').textContent=$('nm').value||'السعر النهائي';
+ $('rp').innerHTML=img?'<img class="pic" src="'+img+'" alt="">':'🖨️';
+ if(!n('wt')&&!hrs){last_total=0;last_unit=0;$('total').textContent='0.000';$('btv').textContent='0.000';$('unit').textContent='';$('bar').innerHTML='';$('leg').innerHTML='';$('rows').innerHTML='<div class="empty" style="padding:14px">أدخل بيانات القطعة لحساب السعر</div>';$('stats').innerHTML='';$('alert').textContent='';last='';return}
+ var q=Math.max(1,Math.round(n('qty')));
+ var fil=n('wt')*(1+n('waste')/100)*(n('sw')?n('sp')/n('sw'):0);
+ var kT=n('pw')*hrs/1000*q,d=$('ssn').value.split(',').map(Number);
+ var rt=[n('r1'),n('r2'),n('r3')].map(function(b,i){return b/1000*(1-d[i]/100)});
+ var eT=tier(n('hh')+kT,rt)-tier(n('hh'),rt),el=eT/q;
+ var ma=n('life')?hrs*n('pp')*(1+n('mt')/100)/n('life'):0;
+ var risk=(fil+el+ma)*n('fail')/100;
+ var lab=n('rate')*((n('des')+n('set')/60)/q+n('post')/60);
+ var cost=fil+el+ma+risk+lab,pf=cost*n('mg')/100,sell=cost+pf,mu=n('minp')/q,mh=sell<mu;
+ if(mh){pf+=mu-sell;sell=mu}
+ var vat=sell*n('vat')/100,fin=(sell+vat)*q;
+ if($('rnd').checked)fin=Math.ceil(fin*10-1e-9)/10;
+ var un=fin/q,P=[['الفلامنت',fil,'#0e9f83'],['الكهرباء',el,'#e2a400'],['الطابعة والصيانة',ma,'#4f7cff'],['المخاطرة',risk,'#e0607e'],['الجهد',lab,'#8b5cf6'],['الربح',pf,'#64748b']];
+ var t=P.reduce(function(a,p){return a+p[1]},0)||1;
+ $('total').textContent=f(fin);$('btv').textContent=f(fin);
+ $('unit').textContent=q>1?'سعر القطعة '+f(un)+' × '+q:'';
+ $('bar').innerHTML=P.map(function(p){return '<i style="width:'+p[1]/t*100+'%;background:'+p[2]+'"></i>'}).join('');
+ $('leg').innerHTML=P.map(function(p){return '<span style="--c:'+p[2]+'">'+p[0]+'</span>'}).join('');
+ $('rows').innerHTML=P.map(function(p){return '<div class="row"><span>'+p[0]+' (للقطعة)</span><b>'+f(p[1])+'</b></div>'}).join('')+(n('vat')?'<div class="row"><span>الضريبة</span><b>'+f(vat)+'</b></div>':'')+'<div class="row"><span>تكلفتك قبل الربح</span><b>'+f(cost)+'</b></div>';
+ $('stats').innerHTML='<div class="s">سعر الغرام<b>'+f(n('wt')?un/n('wt'):0)+'</b></div><div class="s">استهلاك الكهرباء<b>'+kT.toFixed(2)+' kWh</b></div><div class="s">كهرباء للساعة<b>'+f(hrs?eT/(hrs*q):0)+'</b></div><div class="s">صافي ربح الطلب<b>'+f(pf*q)+'</b></div>';
+ var a=[];if(mh)a.push('طُبّق الحد الأدنى للطلب.');
+ if(n('hh')<=4000&&n('hh')+kT>4000)a.push('الطباعة تنقلك للشريحة الثانية.');
+ if(n('hh')<=6000&&n('hh')+kT>6000)a.push('جزء من الاستهلاك يدخل الشريحة الأغلى.');
+ if(n('mg')<20)a.push('هامش أقل من 20% قد لا يغطي الأعطال.');
+ $('alert').textContent=a.join(' ');
+ last=($('nm').value||'عرض سعر طباعة 3D')+'\nالخامة: '+MATS[mat].n+'\nالكمية: '+q+'\nالوزن: '+n('wt')+' غ | الوقت: '+hm(hrs)+'\nسعر القطعة: '+f(un)+' ر.ع\nالإجمالي: '+f(fin)+' ر.ع';
+ last_total=fin;last_unit=un}
+
+function setImg(d){img=d;$('im').src=d||'';$('im').classList.toggle('hide',!d);$('rm').classList.toggle('hide',!d);$('upt').classList.toggle('hide',!!d);calc()}
+$('up').onclick=function(e){if(e.target.id!=='rm')$('file').click()};
+$('rm').onclick=function(){setImg('')};
+$('file').onchange=function(){var fl=this.files[0];if(!fl)return;var r=new FileReader();
+ r.onload=function(){var im=new Image();im.onload=function(){var m=560,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);setImg(c.toDataURL('image/jpeg',.7))};im.src=r.result};r.readAsDataURL(fl);this.value=''};
+function clearCalc(){['nm','wt','qty','hr','mn'].forEach(function(i){$(i).value=''});auto=true;loadedId=null;$('rep').checked=false;$('edb').classList.add('hide');setImg('');upd()}
+$('clr').onclick=function(){clearCalc();window.scrollTo(0,0)};
+
+/* ---------- المحفوظات ---------- */
+function snap(){var d={};NUM.concat(['nm','ssn']).forEach(function(i){d[i]=$(i).value});d.rnd=$('rnd').checked;return d}
+function cnt(){$('cnt').textContent=items.length?'('+items.length+')':''}
+$('save').onclick=function(){
+ if(!(n('wt')>0||n('hr')+n('mn')>0)){toast('أدخل الوزن أو الوقت أولًا');return}
+ var old=(loadedId&&$('rep').checked)?items.find(function(x){return x.id==loadedId}):null,prev=items.slice();
+ var it={id:old?old.id:Date.now(),date:new Date().toISOString(),name:$('nm').value.trim()||'منتج بدون اسم',img:img,mat:mat,prof:prof,total:last_total,unit:last_unit,pub:old?old.pub:true,d:snap()};
+ if(old)items[items.indexOf(old)]=it;else items.unshift(it);
+ if(sv('p3d_items',items)){cnt();toast(old?'تم استبدال الأصلي ✓':'تمت الإضافة كحفظ جديد ✓');clearCalc();window.scrollTo(0,0)}else{items=prev;toast('المساحة ممتلئة، احذف بعض المحفوظات')}};
+function render(){var L=$('list');if(!items.length){L.innerHTML='<div class="card empty">لا توجد عناصر محفوظة بعد.<br>احسب سعر منتج ثم اضغط «حفظ كجديد».</div>';return}
+ L.innerHTML=items.map(function(x){return '<div class="card" data-id="'+x.id+'"><div class="it">'+(safeImg(x.img)?'<img class="pic" src="'+x.img+'" alt="">':'<div class="pic">🖨️</div>')+'<div><h3>'+esc(x.name)+'</h3><p>'+MATS[x.mat].n+' · '+x.d.wt+' غ · '+(x.d.qty||1)+' قطعة</p><p>'+new Date(x.date).toLocaleDateString('ar-OM')+'</p></div><div class="pr">'+f(x.unit)+'<br><small>ر.ع / قطعة</small></div></div>'+
+ '<label class="swl"><input type="checkbox" data-a="p"'+(x.pub!==false?' checked':'')+'> ظاهر للزوار</label>'+
+ '<div class="acts"><button class="btn" data-a="o">تعديل</button><button class="btn sec" data-a="d">حذف</button></div></div>'}).join('')}
+$('list').onclick=function(e){var b=e.target.closest('button,input');if(!b)return;var id=b.closest('.card').dataset.id,x=items.find(function(y){return y.id==id});if(!x)return;
+ if(b.dataset.a=='p'){x.pub=b.checked;sv('p3d_items',items);toast(b.checked?'سيظهر للزوار بعد النشر':'سيُخفى عن الزوار بعد النشر')}
+ else if(b.dataset.a=='d'){if(b.dataset.s){items=items.filter(function(y){return y.id!=id});sv('p3d_items',items);cnt();render()}else{b.dataset.s=1;b.textContent='تأكيد الحذف؟'}}
+ else if(b.dataset.a=='o')openIt(x)};
+function openIt(x){NUM.concat(['nm','ssn']).forEach(function(i){if(x.d[i]!==undefined)$(i).value=x.d[i]});$('rnd').checked=x.d.rnd!==false;mat=x.mat;prof=x.prof;auto=false;loadedId=x.id;$('rep').checked=false;$('edn').textContent=x.name;$('edb').classList.remove('hide');setImg(x.img||'');drawChips();upd();tab(1)}
+
+/* ---------- النشر والنسخ الاحتياطي ---------- */
+function pubData(){return items.filter(function(x){return x.pub!==false}).map(function(x){return {id:x.id,name:x.name,price:+x.unit.toFixed(3),img:x.img||'',date:x.date}})}
+function pubTab(){var d=pubData();$('pc1').textContent=d.length;$('pc2').textContent=items.length;grid($('pv'),d,'');
+ var h=ADMIN_HASH||ld('p3d_hash','');$('hsh').innerHTML=h?'<code>'+h+'</code>'+(ADMIN_HASH?'<p class="note">الرمز مضبوط في الملف ✓</p>':'<p class="note">مثال: <code>var ADMIN_HASH=\''+h.slice(0,10)+'…\';</code></p>'):'—'}
+$('dlp').onclick=function(){dl('products.json',JSON.stringify(pubData()))};
+$('cpp').onclick=function(){cp(JSON.stringify(pubData()))};
+$('bk').onclick=function(){dl('print3d-backup.json',JSON.stringify({items:items,settings:ld('p3d_set',{})}))};
+$('rs').onclick=function(){$('rsf').click()};
+$('rsf').onchange=function(){var fl=this.files[0];if(!fl)return;var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);if(!Array.isArray(o.items))throw 0;items=o.items;sv('p3d_items',items);cnt();pubTab();toast('تم الاسترجاع ✓')}catch(e){toast('ملف غير صالح')}};r.readAsText(fl);this.value=''};
+
+function tab(i){cur=i;[1,2,3].forEach(function(k){$('v'+k).classList.toggle('hide',k!=i);$('t'+k).classList.toggle('on',k==i)});$('bt').classList.toggle('hide',i!=1);if(i==2)render();if(i==3)pubTab();window.scrollTo(0,0)}
+$('t1').onclick=function(){tab(1)};$('t2').onclick=function(){tab(2)};$('t3').onclick=function(){tab(3)};
+$('copy').onclick=function(){if(last)cp(last);else toast('لا يوجد عرض سعر بعد')};
+
+/* ---------- تشغيل ---------- */
+(function(){var s=ld('p3d_set',null);
+ if(s){SET.forEach(function(i){if(s[i]!==undefined)$(i).value=s[i]});if(s.rnd!==undefined)$('rnd').checked=s.rnd;if(MATS[s.mat])mat=s.mat;if(PROFS[s.prof])prof=s.prof}
+ items=ld('p3d_items',[]);cnt();drawChips();
+ NUM.concat(['nm','ssn','rnd']).forEach(function(i){$(i).addEventListener('input',function(){
+  if(i=='hr'||i=='mn'){auto=false;upd()}else if(i=='wt'){upd()}else if(i=='mg'){drawChips();calc()}else calc()})});
+ upd();show()})();
+</script>
+</body>
+</html>
