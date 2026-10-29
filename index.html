@@ -207,7 +207,9 @@ function safeImg(s){return typeof s==='string'&&s.indexOf('data:image/')===0?s:'
 function tier(k,r){return Math.min(k,4000)*r[0]+Math.max(0,Math.min(k,6000)-4000)*r[1]+Math.max(0,k-6000)*r[2]}
 function hm(h){var m=Math.round(h*60);return Math.floor(m/60)+' س '+(m%60)+' د'}
 function est(){return n('wt')/(PROFS[prof].g*MATS[mat].k)}
-function dl(name,text){try{claude.use('downloads').then(function(d){if(!d){toast('التنزيل غير متاح هنا');return}d.save({filename:name,data:text}).catch(function(){})})}catch(e){toast('التنزيل غير متاح هنا')}}
+function dl(name,text){
+ try{if(window.claude&&claude.use){claude.use('downloads').then(function(d){if(!d){toast('التنزيل غير متاح هنا');return}d.save({filename:name,data:text}).catch(function(){})});return}}catch(e){}
+ try{var u=URL.createObjectURL(new Blob([text],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);toast('جارٍ التنزيل… إن لم يبدأ فاستخدم «نسخ المحتوى»')}catch(e){toast('تعذر التنزيل، استخدم «نسخ المحتوى»')}}
 function cp(t){try{navigator.clipboard.writeText(t).then(function(){toast('تم النسخ')},function(){toast('تعذر النسخ')})}catch(e){toast('تعذر النسخ')}}
 
 /* ---------- المعرض (للزوار والمعاينة) ---------- */
