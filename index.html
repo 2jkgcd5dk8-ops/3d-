@@ -87,13 +87,13 @@ ol{padding-inline-start:20px;font-size:.86rem;margin:6px 0}
 </head>
 <body>
 <div class="wrap">
-<div class="hd"><div class="logo">🖨️</div><div style="flex:1"><h1>الطباعة ثلاثية الأبعاد <span class="bdg hide" id="bdg">مشرف</span></h1><p id="sub">معرض المنتجات</p></div><button class="lnk hide" id="out" type="button">خروج</button></div>
+<div class="hd"><div class="logo" id="lgo">🖨️</div><div style="flex:1"><h1>الطباعة ثلاثية الأبعاد <span class="bdg hide" id="bdg">مشرف</span></h1><p id="sub">معرض المنتجات</p></div><button class="lnk hide" id="out" type="button">خروج</button></div>
 
 <!-- VIEWER -->
 <div id="vw">
 <input id="q" placeholder="🔍 ابحث عن منتج" style="margin-bottom:12px">
 <div id="vg" class="pg"></div>
-<div class="ft"><button class="lnk" id="li" type="button" style="color:var(--mut);font-weight:400;font-size:.8rem">دخول المشرف</button></div>
+<div class="ft hide"><button class="lnk" id="li" type="button" style="color:var(--mut);font-weight:400;font-size:.8rem">دخول المشرف</button></div>
 </div>
 
 <!-- ADMIN -->
@@ -238,6 +238,7 @@ $('lgb').onclick=async function(){var p=$('pwd').value;
  if(!ref){sv('p3d_hash',h);ref=h}
  if(h!==ref){$('lgm').textContent='كلمة المرور غير صحيحة.';return}
  sv('p3d_admin',1);$('lg').classList.add('hide');show();tab(1)};
+var tp=0,tt;$('lgo').onclick=function(){tp++;clearTimeout(tt);tt=setTimeout(function(){tp=0},2500);if(tp>=5){tp=0;if(!isAdm())$('li').onclick()}};
 $('out').onclick=function(){sv('p3d_admin',0);show()};
 
 /* ---------- الحاسبة ---------- */
@@ -335,7 +336,7 @@ $('copy').onclick=function(){if(last)cp(last);else toast('لا يوجد عرض �
  items=ld('p3d_items',[]);cnt();drawChips();
  NUM.concat(['nm','ssn','rnd']).forEach(function(i){$(i).addEventListener('input',function(){
   if(i=='hr'||i=='mn'){auto=false;upd()}else if(i=='wt'){upd()}else if(i=='mg'){drawChips();calc()}else calc()})});
- upd();show()})();
+ upd();show();if(location.hash==='#admin'&&!isAdm())$('li').onclick()})();
 </script>
 </body>
 </html>
